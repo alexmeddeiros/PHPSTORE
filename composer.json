@@ -1,0 +1,17 @@
+{
+    "name": "55419/phpstore",
+    "description": "Loja online em php",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Alex Medeiros",
+            "email": "alex@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "core\\": "core/"
+        }
+    }
+}
