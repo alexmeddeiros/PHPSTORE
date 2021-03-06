@@ -4,8 +4,11 @@ namespace core\classes;
 
 class Functions
 {
-    public function teste()
+    // ==================================================
+    public static function Layout()
     {
-        echo 'olá';
+
+
+        //Apresenta as views para aplicação
     }
 }
