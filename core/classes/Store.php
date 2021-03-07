@@ -4,7 +4,7 @@ namespace core\classes;
 
 use Exception;
 
-class Functions
+class Store
 {
     // ==================================================
     public static function Layout($layout, $dados = null)
@@ -30,6 +30,13 @@ class Functions
         foreach ($layout as $layout) {
             include("../core/views/$layout.php");
         };
+    }
+
+    // ==================================================
+    public static function logged()
+    {
+        // verifica se existe um cliente com sessão
+        return isset($_SESSION['cliente']);
     }
 }
 

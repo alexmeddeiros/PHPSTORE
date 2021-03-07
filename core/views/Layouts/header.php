@@ -1,17 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- Cria duas divs bootstrap
+div.container-fluid>div.row>(div.col-6)*2 -->
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loja PHP</title>
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/app.css">
-
-</head>
-
-<body>
-
-    <h1>HEADER</h1>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6 p-3"><?= APP_NAME ?></div>
+        <div class="col-6 text-end p-3">
+            <a href="http://">item1</a>
+            <a href="http://">item2</a>
+            <a href="http://">item3</a>
+            <a href="http://"><i class="fas fa-shopping-cart"></i></a>
+            <span class="badge bg-warning">8</span>
+        </div>
+    </div>
+</div>

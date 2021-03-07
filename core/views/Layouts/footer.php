@@ -1,9 +1,7 @@
-<h1>FOOTER</h1>
-
-
-<script src="assets/js/bootstrap.bundle.min.js"></script>
-<script src="assets/js/fontawesome.min.js"></script>
-<script src="assets/js/app.js"></script>
-</body>
-
-</html>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 text-center p-3">
+            <?= APP_NAME . '(' . APP_VERSION . ') &copy; ' . date('Y') ?>
+        </div>
+    </div>
+</div>

@@ -2,7 +2,7 @@
 
 namespace core\controller;
 
-use core\classes\Functions;
+use core\classes\Store;
 
 class Main
 {
@@ -13,15 +13,16 @@ class Main
 
         // 1 - carrega e trata dados (calculos e base de dados)
         $dados = [
-            'titulo' => 'Este é o título',
-            'clientes' => ['joao', 'ana', 'carlos']
+            'titulo' => APP_NAME . ' ' . APP_VERSION,
         ];
 
-        // 2 - apresenta o layout (views)
-        Functions::layout([
+        // 2 - apresenta o layout (views) e envia os dados para as view
+        Store::layout([
+            'layouts/html_header',
             'layouts/header',
             'home',
-            'layouts/footer'
+            'layouts/footer',
+            'layouts/html_footer'
         ], $dados);
     }
 

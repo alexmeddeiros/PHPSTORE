@@ -1,11 +1,8 @@
-<h1><?= $titulo ?></h1>
-
-<ul>
-    <ol>
-        <?php foreach ($clientes as $c) : ?>
-            <li> <?= $c ?> </li>
-        <?php endforeach; ?>
-    </ol>
-</ul>
-
-<h1> <i class="far fa-trash-alt"></i> </h1>
+<!-- div.container-fluid>div.row>div.col-12 -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h1>Pagina inicial!</h1>
+        </div>
+    </div>
+</div>
