@@ -1,1 +1,11 @@
 /* app css */
+
+.nav_bar{
+    background: rgb(154, 171,194);
+    color:black;
+}
+
+.foo{
+    background: rgb(60, 74,82);
+    color:white;
+}

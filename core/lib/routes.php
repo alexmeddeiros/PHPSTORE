@@ -4,7 +4,14 @@
 
 $routes = [
     'home' => 'main@index',
-    'store' => 'main@store'
+    'store' => 'main@store',
+
+    // CLIENTE =======
+    'newCostumer' => 'main@newCostumer',
+    'createCostumer' => 'main@createCostumer',
+
+
+    'cart' => 'main@cart'
 ];
 
 // defina a action

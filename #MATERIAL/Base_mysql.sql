@@ -22,16 +22,26 @@ USE `php_store`;
 DROP TABLE IF EXISTS `clientes`;
 CREATE TABLE IF NOT EXISTS `clientes` (
   `id_cliente` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `nome` varchar(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `password` varchar(250) DEFAULT NULL,
+  `full_name` varchar(250) DEFAULT NULL,
+  `address` varchar(250) DEFAULT NULL,
+  `uf` varchar(50) DEFAULT NULL,
+  `phone` varchar(50) DEFAULT NULL,
+  `purl` varchar(50) DEFAULT NULL,
+  `status` tinyint(4) DEFAULT 0,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id_cliente`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela php_store.clientes: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela php_store.clientes: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` (`id_cliente`, `nome`) VALUES
-	(1, 'Ana'),
-	(2, 'Pedro'),
-	(3, 'Joao');
+INSERT INTO `clientes` (`id_cliente`, `email`, `password`, `full_name`, `address`, `uf`, `phone`, `purl`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(1, 'Ana', NULL, NULL, NULL, NULL, NULL, NULL, 0, '2021-03-07 11:26:02', '2021-03-07 11:26:02', NULL),
+	(2, 'Pedro', NULL, NULL, NULL, NULL, NULL, NULL, 0, '2021-03-07 11:26:02', '2021-03-07 11:26:02', NULL),
+	(3, 'Joao', NULL, NULL, NULL, NULL, NULL, NULL, 0, '2021-03-07 11:26:02', '2021-03-07 11:26:02', NULL);
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

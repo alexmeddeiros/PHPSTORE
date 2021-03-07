@@ -32,7 +32,7 @@ class Database
     }
 
     //==================================================
-    // CREATE
+    // SELECT
     public function select($sql, $parametros = null)
     {
         // verufuca se é uma instrulçao SELCT
