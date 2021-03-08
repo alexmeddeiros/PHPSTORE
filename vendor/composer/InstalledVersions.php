@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '47b8ec8bc4c5188d780f8808a2c20226108e55b0',
+    'reference' => 'c035c0f871f54213a2968edc7c2966dc8a69e72b',
     'name' => '55419/phpstore',
   ),
   'versions' => 
@@ -42,7 +42,16 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '47b8ec8bc4c5188d780f8808a2c20226108e55b0',
+      'reference' => 'c035c0f871f54213a2968edc7c2966dc8a69e72b',
+    ),
+    'phpmailer/phpmailer' => 
+    array (
+      'pretty_version' => 'v5.2.28',
+      'version' => '5.2.28.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'acba50393dd03da69a50226c139722af8b153b11',
     ),
   ),
 );

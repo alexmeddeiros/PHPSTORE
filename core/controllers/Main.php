@@ -2,8 +2,8 @@
 
 namespace core\controllers;
 
+use core\classes\SendEmail;
 use core\classes\Store;
-use core\lib\Database;
 use core\models\Clientes;
 
 class Main
@@ -11,6 +11,7 @@ class Main
     // ======= pagina home ==========
     public function index()
     {
+
 
         // 2 - apresenta o layout (views) e envia os dados para as view
         Store::layout([
@@ -94,20 +95,29 @@ class Main
         }
 
 
-
         // Registrando cliente a base de dados e returnando o pURL
         $purl = $cliente->createCostumer();
+        $emailCostumer = strtolower(trim($_POST['email']));
 
-        // Criar um link purl para enviar por email
-        $link_purl = "http://localhost/PHPSTORE/public/?a=confirmar_email&purl=$purl";
+        // Envio do Email para o cliente
+        $email = new SendEmail();
+        $res = $email->sendEmailConfirm($emailCostumer, $purl);
+
+
+
+
+
+
+
+
 
 
         /**
          * 1 - verifica se as senhas são iguais                             ok
          * 2 - base de dados - ja existe outra conta om o mesmo email?      ok
-         * 3 - registro                                                     to do
-         *      - criar purl(personal url)
-         *      - guardar dados na tabela clientes
+         * 3 - registro                                                     ok
+         *      - criar purl(personal url)                                  ok
+         *      - guardar dados na tabela clientes                          ok
          *      - enviar um email com o purl para o cliente
          *      - apresentar uma mensagem indicando que validar o email
          */
