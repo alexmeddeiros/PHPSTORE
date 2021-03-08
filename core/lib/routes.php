@@ -30,7 +30,7 @@ if (isset($_GET['a'])) {
 
 //trata as rotas
 $partes = explode('@', $routes[$action]);
-$controller = 'core\\controller\\' . ucfirst($partes[0]);
+$controller = 'core\\controllers\\' . ucfirst($partes[0]);
 $metodo = $partes[1];
 
 $ctr = new $controller();

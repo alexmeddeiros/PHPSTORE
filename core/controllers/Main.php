@@ -1,9 +1,10 @@
 <?php
 
-namespace core\controller;
+namespace core\controllers;
 
 use core\classes\Store;
 use core\lib\Database;
+use core\models\Clientes;
 
 class Main
 {
@@ -85,18 +86,20 @@ class Main
         }
 
         // Verifica na base de dados se ja existe o email igual
-        $bd = new Database();
-        $params = [
-            ':e' => strtolower(trim($_POST['email']))
-        ];
-        $res = $bd->select("SELECT email FROM clientes WHERE email = :e", $params);
-
-        //se o cliente ja existe...
-        if (count($res) != 0) {
+        $cliente = new Clientes();
+        if ($cliente->emailExist($_POST['email'])) {
             $_SESSION['erro'] = 'Email ja cadastrado na base de dados.';
             $this->newCostumer();
             return;
         }
+
+
+
+        // Registrando cliente a base de dados e returnando o pURL
+        $purl = $cliente->createCostumer();
+
+        // Criar um link purl para enviar por email
+        $link_purl = "http://localhost/PHPSTORE/public/?a=confirmar_email&purl=$purl";
 
 
         /**
