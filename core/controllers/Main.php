@@ -12,7 +12,6 @@ class Main
     public function index()
     {
 
-
         // 2 - apresenta o layout (views) e envia os dados para as view
         Store::layout([
             'layouts/html_header',
@@ -30,6 +29,18 @@ class Main
             'layouts/html_header',
             'layouts/header',
             'store',
+            'layouts/footer',
+            'layouts/html_footer'
+        ]);
+    }
+
+    // ======= pagina do carrinho ==========
+    public function cart()
+    {
+        Store::layout([
+            'layouts/html_header',
+            'layouts/header',
+            'cart',
             'layouts/footer',
             'layouts/html_footer'
         ]);
@@ -102,41 +113,38 @@ class Main
         // Envio do Email para o cliente
         $email = new SendEmail();
         $res = $email->sendEmailConfirm($emailCostumer, $purl);
-
-
-
-
-
-
-
-
-
-
-        /**
-         * 1 - verifica se as senhas são iguais                             ok
-         * 2 - base de dados - ja existe outra conta om o mesmo email?      ok
-         * 3 - registro                                                     ok
-         *      - criar purl(personal url)                                  ok
-         *      - guardar dados na tabela clientes                          ok
-         *      - enviar um email com o purl para o cliente
-         *      - apresentar uma mensagem indicando que validar o email
-         */
     }
 
 
-
-
-
-
-    // ======= pagina do carrinho ==========
-    public function cart()
+    public function confirmEmail()
     {
-        Store::layout([
-            'layouts/html_header',
-            'layouts/header',
-            'cart',
-            'layouts/footer',
-            'layouts/html_footer'
-        ]);
+        // Verifica se je existe cliente logado
+        if (Store::logged()) {
+            $this->index();
+            return;
+        }
+
+        // verifica a existencia de uma query string purl
+        if (!isset($_GET['purl'])) {
+            $this->index();
+            return;
+        };
+
+        $purl = $_GET['purl'];
+
+        // verifica se o PURL é valido
+        if (strlen($purl) != 20) {
+            $this->index();
+            return;
+        }
+
+        $cliente = new Clientes();
+        $res = $cliente->emailValid($purl);
+
+        if ($res) {
+            echo 'Conta validada';
+        } else {
+            echo 'A conta nao foi validada';
+        }
     }
 }

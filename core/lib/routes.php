@@ -9,6 +9,7 @@ $routes = [
     // CLIENTE =======
     'newCostumer' => 'main@newCostumer',
     'createCostumer' => 'main@createCostumer',
+    'emailConfirm' => 'main@confirmEmail',
 
 
     'cart' => 'main@cart'

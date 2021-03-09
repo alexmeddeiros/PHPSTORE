@@ -105,17 +105,20 @@ class Database
     //==================================================
     public function update($sql, $parametros = null)
     {
-        // verufuca se é uma instrulçao update
-        if (!preg_match("/^INSERT/i", $sql)) {
-            throw new Exception("Base de dados - nao é uma instrução UPDATE.");
+        $sql = trim($sql);
+
+        // verifica se é uma instrução UPDATE
+        if (!preg_match("/^UPDATE/i", $sql)) {
+            throw new Exception('Base de dados - Não é uma instrução UPDATE.');
         }
 
-        //executa a pesquisa sql
+        // liga
         $this->ligar();
 
-        //comunica
+        // comunica
         try {
-            //comunicação com bd
+
+            // comunicação com a bd
             if (!empty($parametros)) {
                 $executar = $this->ligacao->prepare($sql);
                 $executar->execute($parametros);
@@ -124,11 +127,12 @@ class Database
                 $executar->execute();
             }
         } catch (PDOException $e) {
-            //caso return error
+
+            // caso exista erro
             return false;
         }
 
-        //desliga
+        // desliga da bd
         $this->desligar();
     }
 

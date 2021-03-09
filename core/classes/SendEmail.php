@@ -10,7 +10,7 @@ class SendEmail
     {
 
         // Purl com link de validação
-        $link = BASE_URL . '?a=emailConfirm=' . $purl;
+        $link = BASE_URL . '?a=emailConfirm&purl=' . $purl;
 
         $mail = new PHPMailer;
 
@@ -19,9 +19,10 @@ class SendEmail
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
         $mail->Username = 'email@gmail.com';
-        $mail->Password = '';
+        $mail->Password = 'secret';
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
+        $mail->CharSet = 'UTF-8';
 
         // Emissor e receptor
         $mail->setFrom('email@gmail.com', 'PHP STORE');
