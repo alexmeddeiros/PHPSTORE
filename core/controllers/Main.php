@@ -113,6 +113,18 @@ class Main
         // Envio do Email para o cliente
         $email = new SendEmail();
         $res = $email->sendEmailConfirm($emailCostumer, $purl);
+
+
+        if (!$res) {
+            Store::layout([
+                'layouts/html_header',
+                'layouts/header',
+                'costumer_created',
+                'layouts/footer',
+                'layouts/html_footer'
+            ]);
+            return;
+        }
     }
 
 
@@ -142,9 +154,19 @@ class Main
         $res = $cliente->emailValid($purl);
 
         if ($res) {
-            echo 'Conta validada';
-        } else {
-            echo 'A conta nao foi validada';
+            Store::layout([
+                'layouts/html_header',
+                'layouts/header',
+                'valid_account',
+                'layouts/footer',
+                'layouts/html_footer'
+            ]);
+            return;
         }
+    }
+
+    public function login()
+    {
+        echo 'fotmulário de login';
     }
 }

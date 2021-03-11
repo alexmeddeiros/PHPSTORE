@@ -25,7 +25,7 @@ class SendEmail
         $mail->CharSet = 'UTF-8';
 
         // Emissor e receptor
-        $mail->setFrom('email@gmail.com', 'PHP STORE');
+        $mail->setFrom('emails@gmail.com', 'PHP STORE');
         $mail->addAddress($emailCostumer);
 
         // conteúdo
@@ -36,10 +36,9 @@ class SendEmail
         $mail->Body = $html;
 
         if (!$mail->send()) {
-            echo 'Não foi possivel enviar o email de confirmação.';
-            echo 'Mailer Error: ' . $mail->ErrorInfo;
+            return true;
         } else {
-            echo 'Email de confirmação enviado';
+            return false;
         }
     }
 }

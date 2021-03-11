@@ -10,6 +10,7 @@ $routes = [
     'newCostumer' => 'main@newCostumer',
     'createCostumer' => 'main@createCostumer',
     'emailConfirm' => 'main@confirmEmail',
+    'login' => 'main@login',
 
 
     'cart' => 'main@cart'
