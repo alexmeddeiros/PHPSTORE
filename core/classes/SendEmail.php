@@ -18,14 +18,14 @@ class SendEmail
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'email@gmail.com';
-        $mail->Password = 'secret';
+        $mail->Username = '....@gmail.com';
+        $mail->Password = '*********';
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
         $mail->CharSet = 'UTF-8';
 
         // Emissor e receptor
-        $mail->setFrom('emails@gmail.com', 'PHP STORE');
+        $mail->setFrom('....@gmail.com', 'PHP STORE');
         $mail->addAddress($emailCostumer);
 
         // conteúdo

@@ -26,12 +26,15 @@ div.container-fluid>div.row>(div.col-6)*2 -->
 
             <!-- Verifica se existe cliente logado -->
             <?php if (Store::logged()) : ?>
+
                 <a href="#"><button type="button" class="btn btn-primary">Minha conta</button></a>
                 <a href="#"><button type="button" class="btn btn-danger">Sair</button></a>
 
             <?php else :  ?>
-                <a href="#"><button type="button" class="btn btn-primary">Entrar na conta</button></a>
+
+                <a href="?a=login"><button type="button" class="btn btn-primary">Login</button></a>
                 <a href="?a=newCostumer"><button type="button" class="btn btn-primary">Criar na conta</button></a>
+
             <?php endif; ?>
 
             <a href="#"><i class="fas fa-shopping-cart"></i></a>

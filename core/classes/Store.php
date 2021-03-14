@@ -47,6 +47,15 @@ class Store
 
         return substr(str_shuffle($chars), 0, $num_char);
     }
+
+
+    // ==================================================
+
+    public static function redirect($route = '')
+    {
+        //Faz o redirecionamento para a URL desejada (rota)
+        header("Location: " . BASE_URL . "?a=$route");
+    }
 }
 
 /**

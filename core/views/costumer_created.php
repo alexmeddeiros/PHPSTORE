@@ -3,9 +3,9 @@
         <div class="col-sm-6 offset-sm-3">
             <h3 class="text-center">Usuário registrado com sucesso</h3>
             <p class="text-center">
-                Foi enviado um email com o link de confirmação da sua conta
+                Foi enviado um email com o link de confirmação da sua conta.
 
-                verifique se o email nao está na pasta de spam..
+                Verifique se o email nao está na caixa de spam..
                 </br>
                 </br>
                 </br>

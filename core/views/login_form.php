@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row my-5">
+        <div class="col-sm-6 offset-sm-3">
+            <div>
+                <h3 class="text-center">Login</h3>
+
+                <form action="?a=login_submit" method="post">
+                    <div class="my-3">
+                        <label>Email do usuário</label>
+                        <input type="email" name="user_email" id="" placeholder="usuario@email.com" class="form-control" required>
+                    </div>
+
+                    <div class="my-3">
+                        <label>Senha</label>
+                        <input type="password" name="user_password" id="" placeholder="Senha" class="form-control" required>
+                    </div>
+
+                    <div class="my-3 text-center">
+                        <input type="submit" value="Entrar" class="btn btn-primary">
+                    </div>
+
+                </form>
+
+                <?php if (isset($_SESSION['erro'])) : ?>
+                    <div class="alert alert-danger text-center">
+
+                        <?php $_SESSION['erro']; ?>
+                        <?php unset($_SESSION['erro']); ?>
+
+                    </div>
+                <?php endif; ?>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -34,18 +34,6 @@ class Main
         ]);
     }
 
-    // ======= pagina do carrinho ==========
-    public function cart()
-    {
-        Store::layout([
-            'layouts/html_header',
-            'layouts/header',
-            'cart',
-            'layouts/footer',
-            'layouts/html_footer'
-        ]);
-    }
-
 
     // ======= pagina do cliente ==========
     public function newCostumer()
@@ -115,6 +103,8 @@ class Main
         $res = $email->sendEmailConfirm($emailCostumer, $purl);
 
 
+        //Apresenta o layout do envio de email e apresenta a mensagem
+        //usuário criado com sucesso!
         if (!$res) {
             Store::layout([
                 'layouts/html_header',
@@ -127,7 +117,7 @@ class Main
         }
     }
 
-
+    // Função é faz a confirmação do email
     public function confirmEmail()
     {
         // Verifica se je existe cliente logado
@@ -153,6 +143,7 @@ class Main
         $cliente = new Clientes();
         $res = $cliente->emailValid($purl);
 
+        //Apresenta o layout de validar conta
         if ($res) {
             Store::layout([
                 'layouts/html_header',
@@ -162,11 +153,103 @@ class Main
                 'layouts/html_footer'
             ]);
             return;
+        } else {
+            //Redireciona para a pagina Inicial
+            Store::redirect();
         }
     }
 
+    // ============ Página de login ===============
     public function login()
     {
-        echo 'fotmulário de login';
+        //Verifica se existe cliente logado
+        if (Store::logged()) {
+            Store::redirect();
+            return;
+        }
+
+        // Caso nao tenha usuário logado, apresenta o form de login
+        Store::layout([
+            'layouts/html_header',
+            'layouts/header',
+            'login_form',
+            'layouts/footer',
+            'layouts/html_footer'
+        ]);
+    }
+    // ===========================================
+    public function login_submit()
+    {
+        //Verifica se existe cliente logado
+        if (Store::logged()) {
+            Store::redirect();
+            return;
+        }
+
+        // Verifica se foi efetuado um POST do form de login
+        if ($_SERVER['REQUEST_METHOD'] != 'POST') {
+            Store::redirect();
+            return;
+        }
+
+        // Verifica se o login é válido ==============
+        /**
+         * 1 - verifica se os campos vieram corretamente preenchidos
+         * 2 - verifica as informaçoes ao banco de dados (login)
+         * 3 - Cria sessão cliente
+         */
+
+        // Passo 1
+        if (
+            !isset($_POST['user_email']) ||
+            !isset($_POST['user_password']) ||
+            !filter_var(trim($_POST['user_email']), FILTER_VALIDATE_EMAIL)
+        ) {
+            //Erro de preenchimento de formolário
+            $_SESSION['erro'] = 'Login inválido';
+            Store::redirect('login');
+            return;
+        }
+
+        // prepara os dados para o model
+        $user = trim(strtolower($_POST['user_email']));
+        $password = trim($_POST['user_password']);
+
+        // Carrega o model e verifica se login é válido
+        $cliente = new Clientes();
+        $res = $cliente->validar_login($user, $password);
+        die('Aqui');
+        echo '<pre>';
+        print_r($res);
+
+
+
+        // Verifica o resultado
+        if (is_bool($res)) {
+
+            //login inválido
+            $_SESSION['erro'] = 'Login inválido';
+            Store::redirect('login');
+            return;
+        } else {
+
+            //login válido]
+            echo '<pre>';
+            print_r($res);
+        }
+    }
+
+
+
+    // ======= pagina do carrinho ==========
+    public function cart()
+    {
+        Store::layout([
+            'layouts/html_header',
+            'layouts/header',
+            'cart',
+            'layouts/footer',
+            'layouts/html_footer'
+        ]);
     }
 }

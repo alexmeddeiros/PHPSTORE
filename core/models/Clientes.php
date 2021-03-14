@@ -23,9 +23,8 @@ class Clientes
             return false;
         };
     }
+
     // ====================================================================
-
-
     public function createCostumer()
     {
         // registra clientes na base de dados
@@ -64,7 +63,7 @@ class Clientes
         return $purl;
     }
 
-
+    // ====================================================================
     public function emailValid($purl)
     {
         // validar email do novo cliente
@@ -91,5 +90,43 @@ class Clientes
                     updated_at = NOW() WHERE :id_cliente = $id_cliente", $params);
 
         return true;
+    }
+
+    // ====================================================================
+    public function validar_login($user, $password)
+    {
+        //verifica se o login é válido
+        $params = [
+            ':user' => $user
+        ];
+
+        $bd =  new Database();
+        $res = $bd->select(
+            "SELECT * FROM clientes 
+            WHERE email = :user 
+            AND status = 1 
+            AND deleted_at IS NULL",
+            $params
+        );
+
+
+        if (count($res != 1)) {
+            // Não existe usuário
+            return false;
+        } else {
+
+            // Temos usuário
+            $user = $res[0];
+
+            //verifica a password e a hash
+            if (!password_verify($password, $user->password)) {
+                // Password inválida
+                return false;
+            } else {
+
+                // login válido
+                return $user;
+            }
+        }
     }
 }
