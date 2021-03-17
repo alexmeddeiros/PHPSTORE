@@ -84,16 +84,21 @@ class Clientes
         $params = [
             ':id_cliente' => $id_cliente
         ];
-        $bd->update("UPDATE clientes SET 
-                    purl = NULL, 
-                    status = 1, 
-                    updated_at = NOW() WHERE :id_cliente = $id_cliente", $params);
+        $bd->update(
+            "UPDATE clientes SET 
+            purl = NULL, 
+            status = 1, 
+            updated_at = NOW() 
+            WHERE 
+            :id_cliente = $id_cliente",
+            $params
+        );
 
         return true;
     }
 
     // ====================================================================
-    public function validar_login($user, $password)
+    public function validarLogin($user, $password)
     {
         //verifica se o login é válido
         $params = [
@@ -104,13 +109,13 @@ class Clientes
         $res = $bd->select(
             "SELECT * FROM clientes 
             WHERE email = :user 
-            AND status = 1 
+            AND status = 1  
             AND deleted_at IS NULL",
             $params
         );
 
 
-        if (count($res != 1)) {
+        if (count($res) != 1) {
             // Não existe usuário
             return false;
         } else {

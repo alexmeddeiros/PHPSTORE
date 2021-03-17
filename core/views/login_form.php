@@ -24,7 +24,7 @@
                 <?php if (isset($_SESSION['erro'])) : ?>
                     <div class="alert alert-danger text-center">
 
-                        <?php $_SESSION['erro']; ?>
+                        <?= $_SESSION['erro']; ?>
                         <?php unset($_SESSION['erro']); ?>
 
                     </div>

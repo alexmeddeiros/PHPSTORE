@@ -155,6 +155,7 @@ class Main
             return;
         } else {
             //Redireciona para a pagina Inicial
+            // vazio. ele vai pro inicio do site
             Store::redirect();
         }
     }
@@ -205,7 +206,7 @@ class Main
             !isset($_POST['user_password']) ||
             !filter_var(trim($_POST['user_email']), FILTER_VALIDATE_EMAIL)
         ) {
-            //Erro de preenchimento de formolário
+            //Erro de preenchimento de formúlário
             $_SESSION['erro'] = 'Login inválido';
             Store::redirect('login');
             return;
@@ -215,12 +216,10 @@ class Main
         $user = trim(strtolower($_POST['user_email']));
         $password = trim($_POST['user_password']);
 
+
         // Carrega o model e verifica se login é válido
         $cliente = new Clientes();
-        $res = $cliente->validar_login($user, $password);
-        die('Aqui');
-        echo '<pre>';
-        print_r($res);
+        $res = $cliente->validarLogin($user, $password);
 
 
 
@@ -233,9 +232,13 @@ class Main
             return;
         } else {
 
-            //login válido]
-            echo '<pre>';
-            print_r($res);
+            //login válido. Coloca os seguintes dados na sessão
+            $_SESSION['cliente'] = $res->id_cliente;
+            $_SESSION['user'] = $res->email;
+            $_SESSION['full_name'] = $res->full_name;
+
+            // Redireciona pra pag Loja
+            Store::redirect();
         }
     }
 

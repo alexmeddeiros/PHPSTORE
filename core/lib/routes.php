@@ -14,6 +14,7 @@ $routes = [
     'login_submit' => 'main@login_submit',
 
 
+    // CARRINHO ======
     'cart' => 'main@cart'
 ];
 
