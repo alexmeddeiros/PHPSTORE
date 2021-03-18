@@ -242,6 +242,18 @@ class Main
         }
     }
 
+    // ===========================================
+    public function logout()
+    {
+        // remove as variaveis da sessão
+        unset($_SESSION['cliente']);
+        unset($_SESSION['user']);
+        unset($_SESSION['full_name']);
+
+        // retorna para o inicio da loja
+        Store::redirect();
+    }
+
 
 
     // ======= pagina do carrinho ==========

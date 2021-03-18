@@ -27,8 +27,16 @@ div.container-fluid>div.row>(div.col-6)*2 -->
             <!-- Verifica se existe cliente logado -->
             <?php if (Store::logged()) : ?>
 
-                <a href="#"><button type="button" class="btn btn-primary">Minha conta</button></a>
-                <a href="#"><button type="button" class="btn btn-danger">Sair</button></a>
+                <a href="?a=my_account">
+                    <button type="button" class="btn btn-primary">
+                        <i class="fas fa-user"></i> <?= $_SESSION['user'] ?>
+                    </button>
+                </a>
+                <a href="?a=logout">
+                    <button type="button" class="btn btn-danger">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </a>
 
             <?php else :  ?>
 

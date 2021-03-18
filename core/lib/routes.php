@@ -10,8 +10,11 @@ $routes = [
     'newCostumer' => 'main@newCostumer',
     'createCostumer' => 'main@createCostumer',
     'emailConfirm' => 'main@confirmEmail',
+
+    // LOGIN =========
     'login' => 'main@login',
     'login_submit' => 'main@login_submit',
+    'logout' => 'main@logout',
 
 
     // CARRINHO ======
